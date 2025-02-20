@@ -4,7 +4,7 @@ from pinecone import ServerlessSpec
 import streamlit as st
 import os
 import pinecone
-from langchain_pinecone import PineconeVectorStore
+from langchain_community.vectorstores import Pinecone
 openai_api=st.secrets("openai_api_key")
 # Custom CSS styling
 st.markdown("""
