@@ -1,0 +1,13 @@
+langchain_core
+streamlit
+langchain_community
+PyPDF2
+langchain_ollama
+pinecone
+langchain_pinecone
+openai
+pypdf
+langchain_openai
+OpenAI
+langchain
+python-dotenv
