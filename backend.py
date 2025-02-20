@@ -37,10 +37,10 @@ load_dotenv()
 # initiate the chat engine
 
 #pinecone vector database
-#os.environ['PINECONE_API_KEY'] ="pcsk_6Py8DZ_Y24yWBWmGKDA37i5zBF6rNiJCmeb7Xyr9VXdkFJoppQXXjSZ1uwTLKgw1owUHL"
+
 pine_key=st.secrets("PINECONE_API_KEY")
 
-#os.environ['OPENAI_API_KEY']="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"
+
 openai_api=st.secrets("openai_api_key")
 #pc=pinecone.Pinecone(api_key=pine_key)
 pc=pinecone.Pinecone(api_key=st.secrets("PINECONE_API_KEY"))
