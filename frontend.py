@@ -5,7 +5,7 @@ import streamlit as st
 import os
 import pinecone
 from langchain_pinecone import PineconeVectorStore
-openai_api=os.getenv("openai_api_key")
+openai_api=st.secrets("openai_api_key")
 # Custom CSS styling
 st.markdown("""
 <style>
@@ -72,10 +72,9 @@ with st.sidebar:
 from backend import extract_text_from_pdf
 from backend import split_text
 from backend import ask_deepseek
-pine_key=os.getenv("pine_api_key")
-pc=pinecone.Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+pc=pinecone.Pinecone(api_key=st.secrets("PINECONE_API_KEY"))
 #state management
-my_embedding_model=OpenAIEmbeddings(api_key=openai_api,model="text-embedding-ada-002")
+my_embedding_model=OpenAIEmbeddings(api_key=st.secrets("openai_api_key"),model="text-embedding-ada-002")
 # Chat container
 uploaded_file=st.file_uploader("Upload",type=["pdf"])
 if uploaded_file:
