@@ -1,6 +1,6 @@
 import backend
 from langchain_openai import OpenAIEmbeddings
-from pinecone import ServerlessSpec
+#from pinecone import ServerlessSpec
 import streamlit as st
 import os
 import pinecone
@@ -66,6 +66,9 @@ with st.sidebar:
     - 💡 Semantic Understanding and Paraphrasing
                                 
     """)
+ 
+    
+    
     st.divider()
     st.markdown("Built with [OpenAI](https://open.ai/) | [LangChain](https://python.langchain.com/)")
     st.caption("Made by Vikash")
@@ -97,7 +100,7 @@ if "index" not in st.session_state:
         name="my-deepseek-pdf-project1",
         dimension=1536,  # Make sure this matches your embeddings
         metric="cosine",
-        spec=ServerlessSpec(cloud="aws", region="us-east-1")        
+        #spec=ServerlessSpec(cloud="aws", region="us-east-1")        
                        )
         st.session_state.index=pc.Index("my-deepseek-pdf-project1")
     
