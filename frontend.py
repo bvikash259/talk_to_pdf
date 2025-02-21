@@ -1,6 +1,5 @@
 import backend
 from langchain_openai import OpenAIEmbeddings
-#from pinecone import ServerlessSpec
 import streamlit as st
 import os
 import pinecone
@@ -110,8 +109,6 @@ if "pdf_processed" in st.session_state and st.session_state.pdf_processed:
     if query: 
         with st.spinner("Processing your question... Please wait"):            
             st.session_state.query=query
-            #st.session_state.clear()
-            #query_embeddings=query_pinecone(query)         
             answer=ask_deepseek(st.session_state.query,st.session_state.text)
             st.write(" Your answer is....")
             st.success(answer)
@@ -121,9 +118,7 @@ if "pdf_processed" in st.session_state and st.session_state.pdf_processed:
        st.session_state.pdf_processed=False
        st.session_state.query=None
        st.session_state.text = None  # Clear the processed text
-       #st.session_state.index = None
-    #st.experimental_rerun()
-    
+       
        
        if "index" in st.session_state:
         st.session_state.index.delete(delete_all=True)
