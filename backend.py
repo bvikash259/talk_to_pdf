@@ -4,8 +4,8 @@ import os
 from langchain_community.llms import OpenAI
 #from langchain.llms import OpenAI
 #from langchain.vectorstores import Pinecone
-#from langchain_pinecone import PineconeVectorStore
-from langchain.vectorstores import PineconeVectorStore
+from langchain_pinecone import PineconeVectorStore
+#from langchain.vectorstores import PineconeVectorStore
 from langchain_community.vectorstores import Pinecone
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
