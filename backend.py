@@ -38,13 +38,13 @@ load_dotenv()
 
 #pinecone vector database
 
-pine_key=st.secrets("PINECONE_API_KEY")
+pine_key=st.secrets["PINECONE_API_KEY"]
 
 
-openai_api=st.secrets("openai_api_key")
+openai_api=st.secrets["openai_api_key"]
 #pc=pinecone.Pinecone(api_key=pine_key)
-pc=pinecone.Pinecone(api_key=st.secrets("PINECONE_API_KEY"))
-my_embedding_model=OpenAIEmbeddings(api_key=st.secrets("openai_api_key"),model="text-embedding-ada-002")    
+pc=pinecone.Pinecone(api_key=st.secrets["PINECONE_API_KEY"])
+my_embedding_model=OpenAIEmbeddings(api_key=st.secrets["openai_api_key"],model="text-embedding-ada-002")    
 openai.api_key =openai_api
 
 # initiate the chat engine
