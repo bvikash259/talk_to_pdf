@@ -1,4 +1,6 @@
 from langchain_core.documents import Document
+from langchain.chat_models import ChatOpenAI
+
 from dotenv import load_dotenv
 import os
 from langchain_community.llms import OpenAI
@@ -9,7 +11,7 @@ from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader        
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import(
@@ -47,7 +49,7 @@ openai.api_key =openai_api
 # initiate the chat engine
 deepseek="deepseek-r1:1.5b"
 llm= ChatOllama(model=deepseek,base_url="http://localhost:11434",temperature=0.7)
-llm1=OpenAI(api_key=st.secrets["openai_api_key"], model="gpt-3.5-turbo")
+llm1=ChatOpenAI(api_key=st.secrets["openai_api_key"], model="gpt-3.5-turbo")
 
 def extract_text_from_pdf(uploaded_file):      
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
