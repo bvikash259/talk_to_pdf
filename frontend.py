@@ -46,7 +46,7 @@ st.markdown("""
 
 
 #streamlit
-st.title("🧠 DeepSeek PDF Q & N")
+st.title("🧠 Talk To PDF")
 st.caption("🚀 Upload PDFs, ask questions, and receive responses instantly")
 # Sidebar configuration
 with st.sidebar:
