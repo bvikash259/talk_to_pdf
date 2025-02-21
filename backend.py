@@ -89,11 +89,16 @@ def ask_deepseek(query,context):
      question_answer_chain = create_stuff_documents_chain(llm1, prompt)
      
      rag_chain = create_retrieval_chain(retrieval, question_answer_chain)
-     
-     results = rag_chain.invoke({"context":context,"input":query})
+     try:
+         results = rag_chain.invoke({"context":context,"input":query})
 
-     final_res=results.get("answer")
-     
+         final_res=results.get("answer")
+     except Exception as e:
+         st.write(f"Error while invoking RAG chain: {e}")
+         final_res = "An error occurred while processing your query."
+
+         
+          
      return final_res
     
 
