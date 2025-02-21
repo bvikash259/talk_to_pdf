@@ -109,6 +109,7 @@ if "pdf_processed" in st.session_state and st.session_state.pdf_processed:
     if query: 
         with st.spinner("Processing your question... Please wait"):            
             st.session_state.query=query
+            st.success("Execution complited before ask function")
             answer=ask_deepseek(st.session_state.query,st.session_state.text)
             st.write(" Your answer is....")
             st.success(answer)
