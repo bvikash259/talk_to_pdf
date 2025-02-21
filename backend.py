@@ -50,7 +50,7 @@ openai.api_key =openai_api
 # initiate the chat engine
 deepseek="deepseek-r1:1.5b"
 llm= ChatOllama(model=deepseek,base_url="http://localhost:11434",temperature=0.7)
-llm1=OpenAI(api_key=st.secrets["OPENAI_API_KEY"], model="text-davinci-003")
+llm1=OpenAI(api_key=st.secrets["openai_api_key"], model="text-davinci-003")
 
 def extract_text_from_pdf(uploaded_file):      
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf:
