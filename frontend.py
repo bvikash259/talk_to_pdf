@@ -5,37 +5,63 @@ import os
 import pinecone
 from langchain_community.vectorstores import Pinecone
 openai_api=st.secrets["openai_api_key"]
-# Custom CSS styling
+# Custom CSS styling for mobile responsiveness
 st.markdown("""
 <style>
-    /* Existing styles */
+    /* Global Styling */
     .main {
         background-color: #1a1a1a;
         color: #ffffff;
+        font-family: Arial, sans-serif;
     }
+
     .sidebar .sidebar-content {
         background-color: #2d2d2d;
+        overflow: auto;
     }
+    
     .stTextInput textarea {
         color: #ffffff !important;
     }
     
-    /* Add these new styles for select box */
+    /* Mobile responsive design */
+    @media (max-width: 600px) {
+        .sidebar .sidebar-content {
+            width: 100%;
+        }
+        .stButton button {
+            width: 100%;
+            font-size: 1.1rem;
+        }
+        .stTextInput input {
+            font-size: 1.1rem;
+        }
+        .stSelectbox select {
+            font-size: 1rem;
+        }
+        .stTextInput, .stTextArea {
+            width: 100%;
+        }
+        .stMarkdown, .stCaption {
+            font-size: 1rem;
+        }
+        .stRadio label, .stSelectbox div {
+            font-size: 1rem;
+        }
+    }
+
+    /* Default and Larger Screens */
     .stSelectbox div[data-baseweb="select"] {
         color: white !important;
         background-color: #3d3d3d !important;
     }
-    
     .stSelectbox svg {
         fill: white !important;
     }
-    
     .stSelectbox option {
         background-color: #2d2d2d !important;
         color: white !important;
     }
-    
-    /* For dropdown menu items */
     div[role="listbox"] div {
         background-color: #2d2d2d !important;
         color: white !important;
@@ -45,17 +71,20 @@ st.markdown("""
 
 
 
+
 #streamlit
 st.title("🧠 Talk To PDF")
-st.caption("🚀 Upload PDFs, ask questions, and receive responses instantly")
-# Sidebar configuration
+st.caption("🚀 Upload PDFs, ask questions, and get responses instantly")
+
+# Sidebar Configuration
 with st.sidebar:
     st.header("⚙️ Configuration")
     selected_model = st.selectbox(
         "Choose Model",
-        ["OpenAI","deepseek-r1:1.5b"],
+        ["OpenAI", "deepseek-r1:1.5b"],
         index=0
-    )    
+    )
+    
     st.divider()
     st.markdown("### Model Capabilities")
     st.markdown("""
@@ -63,14 +92,30 @@ with st.sidebar:
     - 💡 Multi-Page Search and Summarization
     - 💡 Text Extraction and Processing
     - 💡 Semantic Understanding and Paraphrasing
-                                
     """)
- 
-    
     
     st.divider()
     st.markdown("Built with [OpenAI](https://open.ai/) | [LangChain](https://python.langchain.com/)")
-    st.caption("Made by Vikash")
+    st.caption("Developed by Vikash")
+
+    # Monetization Section
+    st.markdown("### Monetization Options")
+    subscription_plan = st.radio("Choose your plan:", ["Free", "Premium"], index=0)
+
+    if subscription_plan == "Free":
+        st.write("📢 Ads will be shown to free users.")
+        # Placeholder for an ad network
+        st.markdown("<h3>Advertisement</h3><p>Consider upgrading to Premium to remove ads.</p>", unsafe_allow_html=True)
+    
+    elif subscription_plan == "Premium":
+        st.write("🔒 Premium features unlocked! Enjoy an ad-free experience and faster responses.")
+
+    st.divider()
+    st.markdown("### License our Technology")
+    st.markdown("""
+    Interested in licensing DeepSeek's search technology for your business?
+    [Contact us](mailto:your.email@example.com) for more information or to schedule a demo!
+    """)
 from backend import extract_text_from_pdf
 from backend import split_text
 from backend import ask_deepseek
