@@ -140,7 +140,7 @@ if uploaded_file:
 if "index" not in st.session_state:
     if "my-deepseek-pdf-project1" not in pc.list_indexes().names():  
         pc.create_index(
-        embedings=my_embedding_model,
+   #     embedings=my_embedding_model,
         name="my-deepseek-pdf-project1",
         dimension=1536,  # Make sure this matches your embeddings
         metric="cosine",
