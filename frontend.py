@@ -3,6 +3,7 @@ from langchain_openai import OpenAIEmbeddings
 import streamlit as st
 import os
 import pinecone
+from pinecone import ServerlessSpec
 from langchain_community.vectorstores import Pinecone
 openai_api=st.secrets["openai_api_key"]
 # Custom CSS styling for mobile responsiveness
