@@ -125,19 +125,15 @@ pc=pinecone.Pinecone(api_key=st.secrets["PINECONE_API_KEY"])
 my_embedding_model=OpenAIEmbeddings(api_key=st.secrets["openai_api_key"],model="text-embedding-ada-002")
 # Chat container
 uploaded_file=st.file_uploader("Upload",type=["pdf"])
-if uploaded_file:
-    
-    if "index" in st.session_state:
-        st.session_state.index.delete(delete_all=True)
-    
-    with st.spinner("Processing PDF... please wait"):
-        text1=extract_text_from_pdf(uploaded_file)
-        text=split_text(text1)
-    st.session_state.uploaded_file=uploaded_file
-    st.session_state.text=text
-    st.session_state.pdf_processed=True
-    st.success("Pdf stored and processed successfully...!")    
 
+if uploaded_file is not None:
+    st.session_state.uploaded_file = uploaded_file
+    with st.spinner("Processing PDF... please wait"):
+        text1 = extract_text_from_pdf(st.session_state.uploaded_file)
+        text = split_text(text1)
+    st.session_state.text = text
+    st.session_state.pdf_processed = True
+    st.success("PDF stored and processed successfully!")
 if "index" not in st.session_state:
     if "my-deepseek-pdf-project1" not in pc.list_indexes().names():  
         pc.create_index(
