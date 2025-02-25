@@ -144,7 +144,7 @@ if "index" not in st.session_state:
         name="my-deepseek-pdf-project1",
         dimension=1536,  # Make sure this matches your embeddings
         metric="cosine",
-        #spec=ServerlessSpec(cloud="aws", region="us-east-1")        
+        spec=ServerlessSpec(cloud="aws", region="us-east-1")        
                        )
         st.session_state.index=pc.Index("my-deepseek-pdf-project1")
     
